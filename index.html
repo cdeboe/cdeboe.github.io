@@ -56,7 +56,7 @@
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="#" class="h2 mb-0">Your Name</a></h1>
+            <h1 class="mb-0 site-logo"><a href="#" class="h2 mb-0">Cade DeBoe</a></h1>
           </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">
@@ -86,7 +86,7 @@
         <div class="row">
           <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
 
-            <img src="\Users\caded\OneDrive\Pictures\HP Palette Sample Photos\SamplePhoto_12.jpg" alt="Image of you of something fun" class="img-fluid">
+            <img src="images/Projectwebpic.jpg" alt="Image of you of something fun" width="192" height="256" class="img-fluid">
 
           </div>
           <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
@@ -96,10 +96,22 @@
                 School: University of San Diego
               </p>
               <p>
-                Professional info
+                Professional info:<br />
+                -I have worked as a machinist for a company named Lieder Development,
+                located in Ontario, California, for two summers. The work involved me taking schematics
+                of wave guides(wires for microwaves) and using mills and CNC machines
+                to make the design.<br /> -I have also been attending the University
+                of San Diego since fall of 2022 to get my BS in computer science and plan to get my
+                masters in cybersecurity.
                </p>
                <p>
-                Hobbies
+                Hobbies:<br />
+                 -Played ice hockey for 13 years, still play to this day.<br />
+                 -I'm currently working on a side project for winter break. It is a
+                 radar equipped auto tracking fly shooter. Using an old arduino kit
+                 from when I was a kid.<br />
+                 -I've also been practicing the guitar a lot. I enjoy playing funk a lot, but classic
+                 rock with high-pitched solos have been my focus recently.
                </p>
 
 
@@ -124,23 +136,73 @@
         <div class="row">
           <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
           
-            <img src="" alt="Image of your project" class="img-fluid">
+            <img src="images/chess.jpg" alt="Output:" class="img-fluid">
           
           </div>
           <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
             <div class="mb-4">
-              <h3>Project Title</h3>
+              <h3>Chess Bot</h3>
               <p>
-               Motivation of the project
+                Project Inspiration: <br />
+                At first we wanted to make a blackjack card counting trainer, but due to our lack of
+                the finer details of card counting, we decided to change projects. Why a chess bot?
+                We wanted to do a project similar to our first idea and a chess bot came to mind when
+                we saw one online and thought it would be a good project to replicate for experience.
               </p>
               <p>
-              Functional requirements/what the project does
+              Functional requirements/what the project does: <br />
+                All output and interaction is within the terminal. You will first select
+                if you are playing against another person or the chess bot. If you choose
+                a another person to play against, player1 will be white and player 2 will
+                be black. You will be asked which piece you would like to move. To select
+                you type the name of the piece then enter. We will then be presented with
+                every valid move that piece can make. Each move has a number you select
+                the move by typing in its number and pressing enter. This will continue until
+                the game of chess comes to its natural conclusion. If at first you choose the
+                chess bot, you will play it just as previously described, but only the opponent
+                will move its own piece when it's their turn, instead of another player.
               </p>
               <p>
-              Project design
+              Project design: <br />
+                We have three major modules that are all called through a main class. The three major modules are the
+                Game, Player  and Piece.<br /><br />
+                Game: This contains 5 classes, the Game class, Board class, Position class, Move class and square class.
+                The main purpose was to output a current instance of the board based on previous moves made by players.
+                So whenever a move is made in a turn, a new board is created.<br /><br />
+                Player: Player has a super-class known as player with two subclasses called HumanPlayer and AIPlayer.
+                HumanPlayer allows for input from the user that can communicate with main and thus the other modules.
+                AIPlayer class uses the minimax algorithm, a popular algorithm for chess bots, that makes decisions for
+                player2 instead of a user input. <br /><br />
+                Piece: Piece has a super-class known as piece, and every piece for a chessboard is a subclass. So we have
+                pawn, rook, bishop, knight, queen and king.
+
+
+
               </p>
               <p>
-              Implementation
+              Implementation: <br />
+                The board is made up of 64 squares. The squares are then maintained in a 2D array. Each square has
+                a piece attribute, it can either be an instance of one of the Piece subclasses or be none. When the program
+                is run the board is initialized with every piece in their starting square. The game always starts with
+                it being player1's turn and player1 is always the white pieces. The user controlling player1 is asked
+                what piece they'd like to move, which is associated with a piece on the board. Once the piece is selected,
+                each piece has a method that calculates its valid moves. These valid moves are printed with numbers assigned
+                to each move. The user types the number of the move they want to make. A move is its own class that has
+                an execute and undo method. You can execute and undo a move as much as you'd like as a user. But a move
+                must be executed before the turn is over and this is handled by main. A turn is terminated based on user
+                input. Once a move is executed and a turn is complete, a new board instance is created with its 2D array
+                of squares updated with the correctly moved piece and captured piece, if any. It then switches turns to
+                player2. Now player2 can be another person, and if so the game would play just like how it does for player1,
+                but instead you are moving the black pieces. If AIPlayer is selected at the start of the program, which
+                is handled by the main class, the AIPlayer does a three depth search to find the most optimal move to make.
+                But every class, as previously described, works exactly like it does for a human player, the move that is
+                executed is just selected by an algorithm called the minimax algorithm. Three depth search means that the
+                algorithm can make the most optimal decision three instances of the board ahead of the current instance.
+                To relate that, it's like thinking three moves ahead. Every turn the state of the game is checked. If you
+                are found to be in check, you are prompted with valid moves for the king only. If game is in check and the
+                king has no valid moves to make, then checkmate, the game ends and the winning player is printed to terminal.
+                There are additional rules such as stalemate and draw, but these are entirely based on conditions checked once
+                every turn. Also, there is an enum class for the state of the game and a color enum class for pieces and squares.
               </p>
 
 
@@ -172,14 +234,14 @@
           <div class="col-md-12 text-center">
             <p class="mb-0">
               <span class="icon-mail_outline d-block h4 text-primary"></span>
-              <span>email address</span>
+              <span>cdeboe@sandiego.edu</span>
             </p>
           </div>
           
           <div class="col-md-12 text-center">
             <p class="mb-0">
               <span class="icon-graduation-cap d-block h4 text-primary"></span>
-              <a href="">Resume</a>
+              <a href="files/Resume.pdf" target="_blank">Resume</a>
             </p>
           </div>
         </div>
